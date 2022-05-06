@@ -3,26 +3,19 @@ import { auth } from "../fireBaeDateBae/config";
 
 import { useAuthContext } from "./useAuthContext";
 
-export const useSignup = () => {
+export const useLogin = () => {
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password, displayName) => {
+  const login = async (email, password) => {
     setError(null);
     setIsPending(true);
 
     try {
-      // signup
-      const res = await auth.createUserWithEmailAndPassword(email, password);
-
-      if (!res) {
-        throw new Error("Could not complete signup");
-      }
-
-      // add display name to user
-      await res.user.updateProfile({ displayName });
+      // login
+      const res = await auth.signInWithEmailAndPassword(email, password);
 
       // dispatch login action
       dispatch({ type: "LOGIN", payload: res.user });
@@ -43,5 +36,5 @@ export const useSignup = () => {
     return () => setIsCancelled(true);
   }, []);
 
-  return { signup, error, isPending };
+  return { login, isPending, error };
 };

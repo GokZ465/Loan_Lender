@@ -1,6 +1,7 @@
 import { createContext, useReducer, useEffect } from "react";
 import { auth } from "../fireBaeDateBae/config";
 
+
 export const AuthContext = createContext();
 
 export const authReducer = (state, action) => {
@@ -21,7 +22,7 @@ export const AuthContextProvider = ({ children }) => {
     user: null,
     authIsReady: false,
   });
-  console.log(AuthContext.state);
+
   useEffect(() => {
     const unsub = auth.onAuthStateChanged((user) => {
       dispatch({ type: "AUTH_IS_READY", payload: user });

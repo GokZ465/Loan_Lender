@@ -14,13 +14,13 @@ export const useLogout = () => {
     setIsPending(true);
 
     try {
-      
+      // sign the user out
       await auth.signOut();
 
-      
+      // dispatch logout action
       dispatch({ type: "LOGOUT" });
 
-     
+      // update state
       if (!isCancelled) {
         setIsPending(false);
         setError(null);
