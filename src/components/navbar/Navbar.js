@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useLogout } from "../../hooks/useLogout";
 
-
 // styles
 import styles from "./Navbar.module.css";
 
@@ -13,7 +12,7 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <ul>
-        <li className={styles.title}>myMoney</li>
+        <li className={styles.title}>LoanLender</li>
 
         {!user && (
           <>
