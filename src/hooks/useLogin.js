@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { auth } from "../fireBaeDateBae/config";
+import { auth, fireStore } from "../fireBaeDateBae/config";
 
 import { useAuthContext } from "./useAuthContext";
 
@@ -14,10 +14,13 @@ export const useLogin = () => {
     setIsPending(true);
 
     try {
-     
       const res = await auth.signInWithEmailAndPassword(email, password);
 
-    
+      await fireStore
+        .collection("users")
+        .doc(res.user.uid)
+        .update({ online: true });
+
       dispatch({ type: "LOGIN", payload: res.user });
 
       if (!isCancelled) {

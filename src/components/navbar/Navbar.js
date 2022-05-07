@@ -6,7 +6,7 @@ import { useLogout } from "../../hooks/useLogout";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
-  const { logout } = useLogout();
+  const { logout, isPending } = useLogout();
   const { user } = useAuthContext();
 
   return (
@@ -32,9 +32,16 @@ export default function Navbar() {
               <Link to="/dashboard">dashboard</Link>
             </li>
             <li>
-              <button className="btn" onClick={logout}>
-                Logout
-              </button>
+              {!isPending && (
+                <button className="btn" onClick={logout}>
+                  Logout
+                </button>
+              )}
+              {isPending && (
+                <button className="btn" disabled>
+                  Logging out
+                </button>
+              )}
             </li>
           </>
         )}

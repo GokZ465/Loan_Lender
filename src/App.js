@@ -7,6 +7,7 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Dashboard from "./pages/dashboard/Dashboard";
+import ScrollToTop from "./components/navbar/Scrolltotop";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -16,6 +17,7 @@ function App() {
       {authIsReady && (
         <BrowserRouter>
           <Navbar />
+          <ScrollToTop />
           <Switch>
             <Route exact path="/">
               {!user && <Redirect to="/login" />}
