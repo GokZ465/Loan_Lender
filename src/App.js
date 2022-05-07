@@ -1,10 +1,12 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import { useAuthContext } from "./hooks/useAuthContext";
+//import Dashboard
 
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -26,6 +28,10 @@ function App() {
             <Route path="/signup">
               {user && user.displayName && <Redirect to="/" />}
               {!user && <Signup />}
+            </Route>
+            <Route path="/dashboard">
+              {user && user.displayName && <Redirect to="/" />}
+              {!user && <Dashboard />}
             </Route>
           </Switch>
         </BrowserRouter>
