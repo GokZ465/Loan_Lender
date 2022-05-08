@@ -1,13 +1,16 @@
 import React from "react";
 import styles from './Dashboard.module.css';
+import Avatar from "../../components/navbar/Avatar";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 function Dashboard() {
+  const {user} = useAuthContext();
   return (
     <div>
       <div className={styles.sidebar}>
         <div class="logo-details">
           <i class="bx bxl-c-plus-plus"></i>
-          <span class="logo_name">Loan</span>
+          
         </div>
         <ul class="nav-links">
           <li>
@@ -46,6 +49,9 @@ function Dashboard() {
               <span class="links_name">Setiings</span>
             </a>
           </li>
+         
+         
+
           {/* <li>
             <a href="#">
               <i class="bx bx-user"></i>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useLogout } from "../../hooks/useLogout";
+import Avatar from "../../components/navbar/Avatar";
 
 // styles
 import styles from "./Navbar.module.css";
@@ -27,7 +28,9 @@ export default function Navbar() {
 
         {user && (
           <>
-            {/* <li>hello, {user.displayName}</li> */}
+            {/* <li>{user.displayName}</li> */}
+
+            {<Avatar src={user.photoURL}></Avatar>}
             <li>
               <Link to="/dashboard">dashboard</Link>
             </li>
