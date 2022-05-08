@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { auth } from "../fireBaeDateBae/config";
-
+import { auth, storage, fireStore } from "../fireBaeDateBae/config";
 import { useAuthContext } from "./useAuthContext";
 
 export const useSignup = () => {
@@ -9,21 +8,33 @@ export const useSignup = () => {
   const [isPending, setIsPending] = useState(false);
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password, displayName) => {
+  const signup = async (email, password, displayName, thumbnail) => {
     setError(null);
     setIsPending(true);
 
     try {
-    
       const res = await auth.createUserWithEmailAndPassword(email, password);
 
       if (!res) {
         throw new Error("Could not complete signup");
       }
 
-      await res.user.updateProfile({ displayName });
+      const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.name}`;
+      console.log(uploadPath);
+      const img = await storage.ref(uploadPath).put(thumbnail);
+      console.log(img);
+      const imgUrl = await img.ref.getDownloadURL();
+      console.log(imgUrl);
 
-     
+      await res.user.updateProfile({ displayName, photoURL: imgUrl });
+
+      //craeting user document for uwu
+      await fireStore.collection("users").doc(res.user.uid).set({
+        online: true,
+        displayName,
+        photoURL: imgUrl,
+      });
+
       dispatch({ type: "LOGIN", payload: res.user });
 
       if (!isCancelled) {
