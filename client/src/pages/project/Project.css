@@ -1,11 +1,18 @@
 .project-details {
+    margin-left: 25%;
     display: grid;
     grid-template-columns: 3fr 2fr;
     align-items: start;
     grid-gap: 60px;
   }
   
+  .btn-reject:hover {
+    color:#fff;
+    background-color: rgb(255, 104, 104);
+    
+  }
 
+ 
   .project-summary {
     background-color: #fff;
     padding: 30px;

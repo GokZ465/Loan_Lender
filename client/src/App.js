@@ -19,6 +19,7 @@ import { Navigate } from "react-router-dom";
 import Success from "./pages/payment/Success";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Form from "./pages/profile/Form";
+import Pending from "./pages/pending/Pending";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -51,7 +52,7 @@ function App() {
               ></Route>
               <Route
                 path="/pending"
-                element={user ? <Profile /> : <Login />}
+                element={user ? <Pending /> : <Login />}
               ></Route>
               <Route
                 path="/dashboard"
@@ -59,6 +60,8 @@ function App() {
               ></Route>
               <Route path="/pay" element={user ? <Pay /> : <Login />}></Route>
               <Route path="/success" element={<Success />}></Route>
+              <Route path="/loans/:id" element={<Project />}></Route>
+              
             </Routes>
           </div>
           {user && <OnlineUsers />}
