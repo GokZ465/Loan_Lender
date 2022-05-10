@@ -7,16 +7,25 @@ import { useFirestore } from "../../hooks/useFirestore";
 export default function ProjectSummary({ project }) {
   const { deleteDocument } = useFirestore("projects");
   const { user } = useAuthContext();
-  const { navigate } = useNavigate();
+  let navigate = useNavigate();
   const handleClick = (e) => {
     deleteDocument(project.id);
-    navigate.push("/");
+    navigate("/");
+  };
+
+  const handleApprove = () => {
+    navigate("/pay");
+  };
+  const handleReject = () => {
+    navigate("/pending");
   };
   return (
     <div>
       <div className="project-summary">
-        <h2 className="page-title">{project.name}</h2>
+        <h1 className="page-title">Sum of {project.name}</h1>
         <p>Requested By {project.createdBy.displayName}</p>
+        <h4>Tenure in months : {project.tenure}</h4>
+        <h4>Interest Percentage : {project.interest} %</h4>
         <p className="due-date">
           Request expires by {project.dueDate.toDate().toDateString()}
         </p>
@@ -30,10 +39,27 @@ export default function ProjectSummary({ project }) {
           ))}
         </div>
       </div>
-      {user.uid === project.createdBy.id && (
+      {user.uid === project.createdBy.id ? (
         <button className="btn" onClick={handleClick}>
           Delete Request
         </button>
+      ) : (
+        <div className="btn-container">
+          <button
+            style={{ margin: "10px" }}
+            className="btn"
+            onClick={handleApprove}
+          >
+            Approve Loan
+          </button>
+          <button
+            style={{ margin: "10px", borderColor: "red", color: "red" }}
+            className="btn btn-reject"
+            onClick={handleReject}
+          >
+            Reject Loan
+          </button>
+        </div>
       )}
     </div>
   );

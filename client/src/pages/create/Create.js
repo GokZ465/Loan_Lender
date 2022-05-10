@@ -17,7 +17,7 @@ const categories = [
 ];
 
 export default function Create() {
-  const { navigate } = useNavigate();
+  let navigate = useNavigate();
 
   const { documents } = useCollection("users");
   const [users, setUsers] = useState([]);
@@ -81,7 +81,7 @@ export default function Create() {
 
     await addDocument(project);
     if (!response.error) {
-      navigate.push("/");
+      navigate("/");
     }
   };
 
@@ -109,7 +109,7 @@ export default function Create() {
             value={name}
           />
         </label>
-       
+
         <label>
           <span>Expires:</span>
           <input
@@ -119,7 +119,7 @@ export default function Create() {
             value={dueDate}
           />
         </label>
-         
+
         <label>
           <span>Tenure:</span>
           <input
@@ -144,10 +144,11 @@ export default function Create() {
         </label>
         <label>
           <span>Details:</span>
-          <textarea className="textarea"
+          <textarea
+            className="textarea"
             required
             onChange={(e) => setDetails(e.target.value)}
-            value={details} 
+            value={details}
           ></textarea>
         </label>
 
@@ -159,7 +160,6 @@ export default function Create() {
             isMulti
           />
         </label>
-       
 
         <button className="btn">Add Request</button>
 

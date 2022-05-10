@@ -58,6 +58,8 @@ function App() {
               ></Route>
               <Route path="/pay" element={user ? <Pay /> : <Login />}></Route>
               <Route path="/success" element={<Success />}></Route>
+              <Route path="/loans/:id" element={<Project />}></Route>
+              
             </Routes>
           </div>
           {user && <OnlineUsers />}
