@@ -32,14 +32,31 @@ function App() {
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<Landing />}></Route>
-              <Route path="/login" element={!user ? <Login />: <Navigate to="/profile"></Navigate>}></Route>
+              <Route
+                path="/login"
+                element={
+                  !user ? <Login /> : <Navigate to="/profile"></Navigate>
+                }
+              ></Route>
               <Route path="/signup" element={!user && <Signup />}></Route>
-              <Route path="/profile" element={user ? <Profile/> : <Login/>}></Route>
-              <Route path="/request" element={user ? <Request /> : <Login/>}></Route>
-              <Route path="/pending" element={user ? <Profile /> : <Login />}></Route>
-              <Route path="/dashboard" element={user ?<Dashboard/> : <Login />}></Route>
-              <Route path="/pay" element={user ? <Pay />: <Login/>}></Route>
-              <Route path="/success" element={<Success/>}></Route>
+              <Route
+                path="/profile"
+                element={user ? <Profile /> : <Login />}
+              ></Route>
+              <Route
+                path="/request"
+                element={user ? <Create /> : <Login />}
+              ></Route>
+              <Route
+                path="/pending"
+                element={user ? <Profile /> : <Login />}
+              ></Route>
+              <Route
+                path="/dashboard"
+                element={user ? <Dashboard /> : <Login />}
+              ></Route>
+              <Route path="/pay" element={user ? <Pay /> : <Login />}></Route>
+              <Route path="/success" element={<Success />}></Route>
             </Routes>
           </div>
           {user && <OnlineUsers />}

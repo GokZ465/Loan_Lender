@@ -5,8 +5,9 @@ import Select from "react-select";
 import "./Create.css";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
-import { useHistory } from "react-router-dom";
+
 import { timestamp } from "../../fireBaeDateBae/config";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
   { value: "development", label: "Development" },
@@ -16,7 +17,8 @@ const categories = [
 ];
 
 export default function Create() {
-  const history = useHistory();
+  const { navigate } = useNavigate();
+
   const { documents } = useCollection("users");
   const [users, setUsers] = useState([]);
   const { addDocument, response } = useFirestore("projects");
@@ -79,7 +81,7 @@ export default function Create() {
 
     await addDocument(project);
     if (!response.error) {
-      history.push("/");
+      navigate.push("/");
     }
   };
 

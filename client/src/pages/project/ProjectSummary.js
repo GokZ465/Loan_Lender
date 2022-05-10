@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useNavigate } from "react-router-dom";
 import Avatar from "../../components/navbar/Avatar";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
@@ -7,10 +7,10 @@ import { useFirestore } from "../../hooks/useFirestore";
 export default function ProjectSummary({ project }) {
   const { deleteDocument } = useFirestore("projects");
   const { user } = useAuthContext();
-  const { history } = useHistory();
+  const { navigate } = useNavigate();
   const handleClick = (e) => {
     deleteDocument(project.id);
-    history.push("/");
+    navigate.push("/");
   };
   return (
     <div>
