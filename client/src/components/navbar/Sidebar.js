@@ -13,7 +13,7 @@ export default function Sidebar() {
     <div className="sidebar">
       <div className="sidebar-content">
         <div className="user">
-           <Avatar src={user.photoURL}  /> 
+          <Avatar src={user.photoURL} />
           <p>Hey {user.displayName}</p>
         </div>
         <nav className="links">
@@ -32,13 +32,13 @@ export default function Sidebar() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/create">
+              <NavLink to="/pending">
                 <img src={AddIcon} alt="add project icon" />
                 <span>Pending Loan</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/create">
+              <NavLink to="/pay">
                 <img src={AddIcon} alt="add project icon" />
                 <span>Pay</span>
               </NavLink>

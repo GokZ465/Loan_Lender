@@ -12,6 +12,8 @@ import Pay from "./pages/payment/Pay";
 import ScrollToTop from "./components/navbar/Scrolltotop";
 import OnlineUsers from "./components/navbar/OnlineUsers";
 import Sidebar from "./components/navbar/Sidebar";
+import Create from "./pages/create/Create";
+import Project from "./pages/project/Project";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -27,7 +29,7 @@ function App() {
             <Switch>
               <Route exact path="/">
                 {!user && <Redirect to="/login" />}
-                {user && <Home />}
+                {user && <Project />}
               </Route>
               <Route path="/login">
                 {user && <Redirect to="/" />}
@@ -37,13 +39,21 @@ function App() {
                 {user && user.displayName && <Redirect to="/" />}
                 {!user && <Signup />}
               </Route>
-              <Route path="/dashboard">
-                {user && user.displayName && <Redirect to="/" />}
-                {!user && <Dashboard />}
+              <Route path="/pending">
+                {!user && user.displayName && <Redirect to="/" />}
+                {user && <Dashboard />}
               </Route>
               <Route path="/pay">
-                {user && user.displayName && <Redirect to="/" />}
-                {!user && <Pay />}
+                {!user && <Redirect to="/" />}
+                {user && <Pay />}
+              </Route>
+              <Route path="/create">
+                {!user && <Redirect to="/" />}
+                {user && <Create />}
+              </Route>
+              <Route path="/loans/:id">
+                {!user && <Redirect to="/login" />}
+                {user && <Project />}
               </Route>
             </Switch>
           </div>
