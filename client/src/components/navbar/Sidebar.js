@@ -13,32 +13,38 @@ export default function Sidebar() {
     <div className="sidebar">
       <div className="sidebar-content">
         <div className="user">
-           <Avatar src={user.photoURL}  /> 
+          <Avatar src={user.photoURL} />
           <p>Hey {user.displayName}</p>
         </div>
         <nav className="links">
           <ul>
             <li>
-              <NavLink exact to="/">
-                <img src={DashboardIcon} alt="dashboard icon" />
+              <NavLink exact to="/dashboard">
+                <img src={AddIcon} alt="add project icon" />
                 <span>Dashboard</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink exact to="/profile">
+                <img src={DashboardIcon} alt="dashboard icon" />
+                <span>Profile</span>
                 {console.log("DashboardIcon sidebar is working")}
               </NavLink>
             </li>
             <li>
-              <NavLink to="/create">
+              <NavLink to="/request">
                 <img src={AddIcon} alt="add project icon" />
                 <span>Request Loan</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/create">
+              <NavLink to="/pending">
                 <img src={AddIcon} alt="add project icon" />
                 <span>Pending Loan</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/create">
+              <NavLink to="/pay">
                 <img src={AddIcon} alt="add project icon" />
                 <span>Pay</span>
               </NavLink>
