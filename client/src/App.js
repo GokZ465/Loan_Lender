@@ -18,6 +18,7 @@ import Request from "./pages/request/Request";
 import { Navigate } from "react-router-dom";
 import Success from "./pages/payment/Success";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Pending from "./pages/pending/Pending";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -49,7 +50,7 @@ function App() {
               ></Route>
               <Route
                 path="/pending"
-                element={user ? <Profile /> : <Login />}
+                element={user ? <Pending /> : <Login />}
               ></Route>
               <Route
                 path="/dashboard"

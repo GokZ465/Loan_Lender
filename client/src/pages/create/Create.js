@@ -109,14 +109,7 @@ export default function Create() {
             value={name}
           />
         </label>
-        <label>
-          <span>Details:</span>
-          <textarea
-            required
-            onChange={(e) => setDetails(e.target.value)}
-            value={details}
-          ></textarea>
-        </label>
+       
         <label>
           <span>Expires:</span>
           <input
@@ -126,6 +119,7 @@ export default function Create() {
             value={dueDate}
           />
         </label>
+         
         <label>
           <span>Tenure:</span>
           <input
@@ -148,6 +142,14 @@ export default function Create() {
             value={interest}
           />
         </label>
+        <label>
+          <span>Details:</span>
+          <textarea className="textarea"
+            required
+            onChange={(e) => setDetails(e.target.value)}
+            value={details} 
+          ></textarea>
+        </label>
 
         <label>
           <span>Assign to:</span>
@@ -157,6 +159,7 @@ export default function Create() {
             isMulti
           />
         </label>
+       
 
         <button className="btn">Add Request</button>
 
