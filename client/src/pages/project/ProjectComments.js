@@ -5,6 +5,7 @@ import { timestamp } from "../../fireBaeDateBae/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
 
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 export default function ProjectComments({ project }) {
   const { user } = useAuthContext();
   const [newComment, setNewComment] = useState("");
@@ -37,10 +38,10 @@ export default function ProjectComments({ project }) {
             <li key={comment.id}>
               <div className="comment-author">
                 <Avatar src={comment.photoURL} />
-                <p>{comment.displayName}</p>
+                <h4>{comment.displayName}</h4>
               </div>
               <div className="comment-date">
-                <p>date here</p>
+                <p >{formatDistanceToNow(comment.createdAt.toDate(),{addSuffix : true})}</p>
               </div>
               <div className="comment-content">
                 <p>{comment.content}</p>
