@@ -18,6 +18,7 @@ import Request from "./pages/request/Request";
 import { Navigate } from "react-router-dom";
 import Success from "./pages/payment/Success";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Form from "./pages/profile/Form";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -43,6 +44,7 @@ function App() {
                 path="/profile"
                 element={user ? <Profile /> : <Login />}
               ></Route>
+              <Route path="/form" element={<Form />}></Route>
               <Route
                 path="/request"
                 element={user ? <Create /> : <Login />}

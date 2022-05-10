@@ -1,195 +1,49 @@
 import { useState } from "react";
+import Avatar from "../../components/navbar/Avatar";
 import Sidebar from "../../components/navbar/Sidebar";
+import { useAuthContext } from "../../hooks/useAuthContext";
 // import { useSignup } from "../../hooks/useSignup";
 
 import styles from "./Profile.module.css";
-
 export default function Profile() {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [displayName, setDisplayName] = useState("");
-  // const { signup, isPending, error } = useSignup();
-  // const [thumbnail, setThumbnail] = useState(null);
-  // const [aadhaar, setAadhaar] = useState(null);
-  // const [thumbnailError, setThumbnailError] = useState(null);
-  // const [aadhaarError, setAadhaarError] = useState(null);
+  const [count,setCount] = useState(true)
+  const {user} = useAuthContext()
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   signup(email, password, displayName, thumbnail);
-  //   console.log(thumbnail);
-  // };
-  // const handleFileChange = (e) => {
-  //   setThumbnail(null);
-  //   let selected = e.target.files[0];
-  //   console.log(selected);
-
-  //   if (!selected) {
-  //     setThumbnailError("Please select a file");
-  //     return;
-  //   }
-  //   if (!selected.type.includes("image")) {
-  //     setThumbnailError("Selected file must be an image");
-  //     return;
-  //   }
-  //   if (selected.size > 100000) {
-  //     setThumbnailError("Image file size must be less than 100kb");
-  //     return;
-  //   }
-
-  //   setThumbnailError(null);
-  //   setThumbnail(selected);
-  //   console.log("thumbnail updated");
-  // };
-
-  // const handleAadhaarChange = (e) => {
-  //   setAadhaar(null);
-  //   let selected = e.target.files[0];
-  //   console.log(selected);
-
-  //   if (!selected) {
-  //     setAadhaarError("Please select a file");
-  //     return;
-  //   }
-  //   if (!selected.type.includes("image")) {
-  //     setAadhaarError("Selected file must be an image");
-  //     return;
-  //   }
-  //   if (selected.size > 100000) {
-  //     setAadhaarError("Image file size must be less than 100kb");
-  //     return;
-  //   }
-
-  //   setAadhaarError(null);
-  //   setAadhaar(selected);
-  
-  //   console.log("Aadhaar updated");
-  // };
 
   return (
     <div>
       {/* <Sidebar /> */}
-    <div className={styles.main}>
-      <form className={styles["signup-form"]}>
-        <div id="column">
-          <h2>Basic Details:</h2>
-          <label>
-            <span>Address</span>
-            <input type="textarea" />
-          </label>
-          <label>
-            <span>Pincode</span>
-            <input type="text" />
-          </label>
-          <label>
-            <span>DOB</span>
-            <input type="date" />
-          </label>
-          <label>
-            <span>Change Photo</span>
-            <input type="file"></input>
-          </label>
-        </div>
-        <div id="column">
-          <h2>Bank Details</h2>
-          <label>
-            <span>Acc No</span>
-            <input type="number" />
-          </label>
-          <label>
-            <span>Bank Name</span>
-            <input type="text" />
-          </label>
-          <label>
-            <span>Branch</span>
-            <input type="text" />
-          </label>
-          <label>
-            <span>IFSC Code</span>
-            <input type="text" />
-          </label>
-        </div>
-        <div>
-          <h2>Current Status</h2>
-          <label>
-            <span>Status</span>
-            <select id="cars" name="cars">
-              <option value="volvo">Student</option>
-              <option value="saab">Employed</option>
-              <option value="fiat">UnEmployed</option>
-              <option value="audi">Retired</option>
-            </select>
-          </label>
-          <label></label>
-          <label>
-            <span>Current CTC(in lakhs)</span>
-            <input type="number" />
-          </label>
-          <label>
-            <span>Company</span>
-            <input type="text" />
-          </label>
-        </div>
-        <div>
-          <h2>Upload Documents</h2>
-          <label>
-            <span>Aadhar</span>
-            <input type="file" />
-          </label>
-          <label>
-            <span>PAN</span>
-            <input type="file" />
-          </label>
-          <label>
-            <span>Salary Slip(if applicable)</span>
-            <input type="file" />
-          </label>
-        </div>
-        
-        {/* <label>
-        <span>Full name:</span>
-        <input
-          type="text"
-          onChange={(e) => setDisplayName(e.target.value)}
-          value={displayName}
-        />
-      </label>
-      <label>
-        <span>Photo:</span>
-        <input required type="file" onChange={handleFileChange} />
-        {thumbnailError && <div className="error">{thumbnailError}</div>}
-      </label>
-      <label>
-        <span>email:</span>
-        <input
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-      </label>
-      <label>
-        <span>password:</span>
-        <input
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-      </label>
+      
+        <section className={styles["page-contain"]}>
+          {/* <button onClick={check}>Checkout</button> */}
+          <a href ="/form"className={styles["data-card"]}>
+            <div className={styles["imgg"]}>
+          <Avatar src={user.photoURL} />
+            </div>
+            <h4>{user.displayName}</h4>
+            <h5>{user.email}</h5>
+            <p>Amount Left</p>
+            <span className={styles["link-text"]}>
+              Click to complete Registration
+              <svg
+                width="25"
+                height="16"
+                viewBox="0 0 25 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M17.8631 0.929124L24.2271 7.29308C24.6176 7.68361 24.6176 8.31677 24.2271 8.7073L17.8631 15.0713C17.4726 15.4618 16.8394 15.4618 16.4489 15.0713C16.0584 14.6807 16.0584 14.0476 16.4489 13.657L21.1058 9.00019H0.47998V7.00019H21.1058L16.4489 2.34334C16.0584 1.95281 16.0584 1.31965 16.4489 0.929124C16.8394 0.538599 17.4726 0.538599 17.8631 0.929124Z"
+                  fill="#753BBD"
+                />
+              </svg>
+            </span>
+          </a>
+        </section>
 
-      <label>
-        <span>Adhaar Card:</span>
-        <input required type="file" onChange={handleAadhaarChange} />
-        {aadhaarError && <div className="error">{aadhaarError}</div>}
-      </label>
-      {!isPending && <button className="btn">sign up</button>}
-      {isPending && (
-        <button className="btn" disabled>
-          loading
-        </button>
-      )}
-      {error && <p>{error}</p>} */}
-      </form>
-    </div>
+      
     </div>
   );
 }
