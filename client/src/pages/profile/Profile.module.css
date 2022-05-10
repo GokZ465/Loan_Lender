@@ -1,0 +1,38 @@
+/* .signup-form {
+    max-width: 360px;
+    margin: 60px auto;
+    padding: 20px;
+  } */
+
+
+  label {
+  width: 250px;
+  padding-right: 140px;
+  display: inline-block;
+}
+input{
+  width:100%
+}
+h2{
+  padding-top:40px; 
+}
+.main{
+  margin-left: 300px;
+  justify-content: center;
+  
+}
+/* .main */
+  /* .signup-form label {
+    display: block;
+    margin: 30px auto;
+  }
+  .signup-form span {
+    display: block;
+    margin-bottom: 6px;
+  }
+  .signup-form input {
+    padding: 8px 6px;
+    font-size: 1em;
+    color: #777;
+    width: 100%;
+  } */

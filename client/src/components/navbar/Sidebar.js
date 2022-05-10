@@ -19,14 +19,20 @@ export default function Sidebar() {
         <nav className="links">
           <ul>
             <li>
-              <NavLink exact to="/">
-                <img src={DashboardIcon} alt="dashboard icon" />
+              <NavLink exact to="/dashboard">
+                <img src={AddIcon} alt="add project icon" />
                 <span>Dashboard</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink exact to="/profile">
+                <img src={DashboardIcon} alt="dashboard icon" />
+                <span>Profile</span>
                 {console.log("DashboardIcon sidebar is working")}
               </NavLink>
             </li>
             <li>
-              <NavLink to="/create">
+              <NavLink to="/request">
                 <img src={AddIcon} alt="add project icon" />
                 <span>Request Loan</span>
               </NavLink>

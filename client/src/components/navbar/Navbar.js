@@ -5,6 +5,7 @@ import Avatar from "../../components/navbar/Avatar";
 
 // styles
 import styles from "./Navbar.module.css";
+import { Navigate } from "react-router-dom";
 
 export default function Navbar() {
   const { logout, isPending } = useLogout();
@@ -13,7 +14,9 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <ul>
-        <li className={styles.title}>LoanLender</li>
+        <li className={styles.title}>
+          <Link to="/">LoanLender</Link>
+        </li>
 
         {!user && (
           <>
@@ -28,15 +31,13 @@ export default function Navbar() {
 
         {user && (
           <>
-            {/* <li>{user.displayName}</li> */}
-
-            {<Avatar src={user.photoURL}></Avatar>}
-            <li>
-              <Link to="/dashboard">dashboard</Link>
-            </li>
             <li>
               {!isPending && (
-                <button className="btn" onClick={logout}>
+                <button
+                  className="btn"
+                  onClick={logout}
+                  element={<Navigate to="/" replace />}
+                >
                   Logout
                 </button>
               )}
